@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import type { ActivityType, User } from '../types';
@@ -98,7 +100,7 @@ const MeetupFlow: React.FC<MeetupFlowProps> = ({ targetUser, onClose, onConfirm 
                     <button
                         className="btn-primary"
                         style={{ flex: 2, opacity: selectedActivity ? 1 : 0.5, pointerEvents: selectedActivity ? 'auto' : 'none' }}
-                        onClick={handleSend} // Fix: was using handleSend before defined? No, defined above.
+                        onClick={handleSend}
                     >
                         Send Request
                     </button>
@@ -150,7 +152,7 @@ const MeetupFlow: React.FC<MeetupFlowProps> = ({ targetUser, onClose, onConfirm 
             <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                transition={{ type: "spring" }} // FIXED: Moved type to transition prop
+                transition={{ type: "spring" }}
                 style={{ fontSize: '64px', marginBottom: '16px' }}
             >
                 ✅

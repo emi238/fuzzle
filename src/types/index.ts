@@ -1,24 +1,24 @@
 export type ActivityType = 'study' | 'hoops' | 'coffee' | 'walk' | 'food';
 
 export interface User {
-  id: string;
-  name: string;
-  avatarUrl: string;
-  degree: string;
-  university: 'UQ' | 'QUT' | 'Griffith';
-  year: number;
-  bio: string;
-  subjects: string[];
-  interests: string[];
-  lat: number;
-  lng: number;
-  isOnline: boolean;
+    id: string;
+    name: string;
+    avatarUrl: string;
+    degree: string;
+    university: 'UQ' | 'QUT' | 'Griffith';
+    year: number;
+    bio: string;
+    subjects: string[];
+    interests: string[];
+    lat: number;
+    lng: number;
+    isOnline: boolean;
 }
 
 export const UNIVERSITIES = {
-  UQ: { lat: -27.4975, lng: 153.0137 },
-  QUT: { lat: -27.4772, lng: 153.0285 },
-  Griffith: { lat: -27.5544, lng: 153.0505 }
+    UQ: { lat: -27.4975, lng: 153.0137 },
+    QUT: { lat: -27.4772, lng: 153.0285 },
+    Griffith: { lat: -27.5544, lng: 153.0505 }
 };
 
 const INTERESTS = ['Surfing', 'Coding', 'Photography', 'Reading', 'Gaming', 'Hiking', 'Music', 'Basketball', 'Art', 'Coffee'];
@@ -27,39 +27,39 @@ const DEGREES = ['Computer Science', 'Engineering', 'Psychology', 'Arts', 'Busin
 
 // Helper to generate mock users
 const generateUsers = (count: number): User[] => {
-  const users: User[] = [];
-  const universities: ('UQ' | 'QUT' | 'Griffith')[] = ['UQ', 'QUT', 'Griffith'];
-  const profileImages = [
-    '/student_profile_1_1768606123923.png',
-    '/student_profile_2_1768606138340.png',
-    '/student_profile_3_1768606152373.png',
-    '/student_profile_4_1768606170415.png'
-  ];
+    const users: User[] = [];
+    const universities: ('UQ' | 'QUT' | 'Griffith')[] = ['UQ', 'QUT', 'Griffith'];
+    const profileImages = [
+        '/student_profile_1_1768606123923.png',
+        '/student_profile_2_1768606138340.png',
+        '/student_profile_3_1768606152373.png',
+        '/student_profile_4_1768606170415.png'
+    ];
 
-  for (let i = 0; i < count; i++) {
-    const uni = universities[Math.floor(Math.random() * universities.length)];
-    const center = UNIVERSITIES[uni];
+    for (let i = 0; i < count; i++) {
+        const uni = universities[Math.floor(Math.random() * universities.length)];
+        const center = UNIVERSITIES[uni];
 
-    // Random offset near university
-    const lat = center.lat + (Math.random() - 0.5) * 0.01;
-    const lng = center.lng + (Math.random() - 0.5) * 0.01;
+        // Random offset near university
+        const lat = center.lat + (Math.random() - 0.5) * 0.01;
+        const lng = center.lng + (Math.random() - 0.5) * 0.01;
 
-    users.push({
-      id: `user-${i}`,
-      name: `Student ${i + 1}`, // In real app, real names
-      avatarUrl: profileImages[i % profileImages.length],
-      university: uni,
-      degree: DEGREES[Math.floor(Math.random() * DEGREES.length)],
-      year: Math.floor(Math.random() * 4) + 1,
-      bio: 'Just looking for study buddies or good coffee spots!',
-      subjects: Array.from({ length: 3 }, () => SUBJECTS[Math.floor(Math.random() * SUBJECTS.length)]),
-      interests: Array.from({ length: 4 }, () => INTERESTS[Math.floor(Math.random() * INTERESTS.length)]),
-      lat,
-      lng,
-      isOnline: Math.random() > 0.3
-    });
-  }
-  return users;
+        users.push({
+            id: `user-${i}`,
+            name: `Student ${i + 1}`, // In real app, real names
+            avatarUrl: profileImages[i % profileImages.length],
+            university: uni,
+            degree: DEGREES[Math.floor(Math.random() * DEGREES.length)],
+            year: Math.floor(Math.random() * 4) + 1,
+            bio: 'Just looking for study buddies or good coffee spots!',
+            subjects: Array.from({ length: 3 }, () => SUBJECTS[Math.floor(Math.random() * SUBJECTS.length)]),
+            interests: Array.from({ length: 4 }, () => INTERESTS[Math.floor(Math.random() * INTERESTS.length)]),
+            lat,
+            lng,
+            isOnline: Math.random() > 0.3
+        });
+    }
+    return users;
 };
 
 export const MOCK_USERS = generateUsers(20);

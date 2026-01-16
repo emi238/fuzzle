@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { User } from '../types';
@@ -29,7 +31,10 @@ const ProfileSidebar: React.FC<ProfileSidebarProps> = ({ user, onClose, onOffer 
         exit: { y: '100%' }
     };
 
-    const isMobile = window.innerWidth < 768; // Simple check, ideally use hook
+    // Need to handle window check carefully in Next.js SSR
+    // But since this is 'use client' and likely only rendered after interaction/mount, it might be ok.
+    // Safer to use a hook or default to desktop if window undefined, but Framer Motion handles variants well.
+    const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
     return (
         <motion.div
